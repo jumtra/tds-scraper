@@ -8,5 +8,32 @@
 #   with-sources: false
 
 -e file:.
+beautifulsoup4==4.12.3
+    # via tds-scraper
+certifi==2024.8.30
+    # via requests
+charset-normalizer==3.4.0
+    # via requests
+idna==3.10
+    # via requests
 numpy==2.1.1
-    # via python-rye-template
+    # via pandas
+    # via tds-scraper
+pandas==2.2.3
+    # via tds-scraper
+python-dateutil==2.9.0.post0
+    # via pandas
+pytz==2024.2
+    # via pandas
+requests==2.32.3
+    # via tds-scraper
+six==1.16.0
+    # via python-dateutil
+soupsieve==2.6
+    # via beautifulsoup4
+tqdm==4.67.0
+    # via tds-scraper
+tzdata==2024.2
+    # via pandas
+urllib3==2.2.3
+    # via requests

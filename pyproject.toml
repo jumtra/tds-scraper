@@ -1,5 +1,5 @@
 [project]
-name = "python-rye-template"
+name = "tds-scraper"
 version = "0.1.0"
 description = "Add your description here"
 authors = [
@@ -7,6 +7,10 @@ authors = [
 ]
 dependencies = [
     "numpy>=2.1.1",
+    "requests>=2.32.3",
+    "beautifulsoup4>=4.12.3",
+    "pandas>=2.2.3",
+    "tqdm>=4.67.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -28,4 +32,4 @@ dev-dependencies = [
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/python_rye_template"]
+packages = ["src/tds_scraper"]
