@@ -4,6 +4,7 @@ import urllib.request
 from logging import getLogger
 from pathlib import Path
 
+import numpy as np
 import pandas as pd  # type: ignore  # noqa: PGH003
 from bs4 import BeautifulSoup  # type: ignore  # noqa: PGH003
 from tqdm import tqdm  # type: ignore  # noqa: PGH003
@@ -17,7 +18,7 @@ def str2float(weather_data: str) -> float:
         return float(weather_data)
     except Exception as e:
         logger.exception(e)  # noqa: TRY401
-        return 0
+        return np.nan
 
 
 def scraping(url: str, date: datetime.datetime) -> list[list[str]]:
