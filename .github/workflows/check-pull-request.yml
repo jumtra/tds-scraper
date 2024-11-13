@@ -1,0 +1,28 @@
+name: Check Pull Request
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+        - "dev/**"
+        - "master/**"
+  push:
+    tags:
+        - "v0.*"
+        - "v1.*"
+
+jobs:
+  check-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v4
+        # ryeのセットアップ
+        - uses: sksat/setup-rye@v0.22.0
+        # ruffのセットアップ
+        - uses: chartboost/ruff-action@v1
+          with:
+              args: 'format --check'
+        - name: Sync Rye
+          run: rye sync
+        - name: Run pytest
+          run: rye run python -m pytest

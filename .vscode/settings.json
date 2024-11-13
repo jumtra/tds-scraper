@@ -1,0 +1,57 @@
+{
+    //////////////
+    // Ruffの設定
+    //////////////
+    // refs: https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff
+    "[python]": {
+        // 保存時にコードを整理
+        "editor.formatOnSave": true,
+        // デフォルトのformatterにruffを指定
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            // 保存時にimportを整理
+            "source.organizeImports": "explicit"
+        }
+    },
+    "ruff.format.args": [
+        "--config=ruff.toml"
+    ],
+    "ruff.lint.args": ["--config=ruff.toml"], // ruff checkに渡す追加のコマンドライン引数。設定ファイル(ruff.tomlなど)より優先される
+    "ruff.path": [], // ruffの実行パス
+    "ruff.importStrategy": "fromEnvironment", // "fromEnvironment": 環境にruffがインストールされている場合は、そちらを使う。 "useBundled": Extension付属のruffを使う。
+    "ruff.lint.run": "onType", // "onType": 入力度にruffを実行。 "onSave":保存時にruffを実行。
+    "ruff.enable": true, // ruffを有効にするか否か。
+    "ruff.organizeImports": true, // source.organizeImports を実行するのにruffを使用するか否か。
+    "ruff.fixAll": true, // source.fixAll を実行するのにruffを使用するか否か。
+    "ruff.codeAction.fixViolation": { // Quick Fix を表示するか否か。
+        "enable": true
+    },
+    "ruff.codeAction.disableRuleComment": { // # nopa でQuick Fixを無視するか否か。
+        "enable": true
+    },
+    "ruff.showNotifications": "always", // ruffの通知を表示するか否か。 "off", "onError", "onWarning", "always"
+    "ruff.trace.server": "off", // "off", "message", "verbose"
+    //////////////
+    // mypyの設定
+    //////////////
+
+    // 設定ファイルの指定
+    "mypy-type-checker.importStrategy": "fromEnvironment",
+    "mypy-type-checker.args": [
+        "--config-file",
+        "mypy.toml"
+    ],
+
+
+    
+    //////////////
+    // pytestの設定
+    //////////////
+    "python.testing.pytestArgs": [
+    "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+      // ファイル保存時にテスト対象コードを自動的に探索
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+}

@@ -1,0 +1,92 @@
+#https://docs.astral.sh/ruff/settings/#lint_pylint_max-branches
+
+# Lint/Formatter非依存のルール
+# 除外したいファイル
+# excludeを設定するとデフォルトで設定されている.venv配下などの設定が上書きされるため要注意
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+    "*.lock",
+    "*.md"
+]
+
+# 行文字数
+line-length = 110
+# インデント幅
+indent-width = 4
+
+# ターゲットpythonバージョン
+target-version = "py312"
+
+# Linterのルール(flake8)
+# https://docs.astral.sh/ruff/rules/　に記載されているルールのうち、Codeが前方一致するルールが適用されます
+
+[lint]
+ignore = [
+    "ANN101",   # selfの型を省略するため
+    "ANN102",   # clsの型を省略するため
+    "ERA001",   # コメントアウト文を許可
+    "FBT003",   # boolean-positional-value-in-call
+    "G004",     # logging-f-string
+    "PLR0913",  # too-many-arguments
+    "RUF100",   # unused-noqa
+    "PTH207",   # glob.globを許可
+    "S311",     # randomを許可
+    "S603",     # Shell無しのsubprocessを許可
+    "TRY002",   # 標準のExceptionの使用を許可
+    "D100",     # public packageのdocstring無を許可
+    "T201",     # print文を許可するため
+    "E203",     # ":"の前の空白を入れないルール
+    #"W503",     # 演算子の前に改行しないようにするルール
+]
+select = ["ALL"]
+
+# auto fixの対象にするルール
+fixable = ["ALL"]
+# auto fixから除外するルール
+# editor.formatOnSaveを使う際に自動でFixされると困るものを指定できます
+unfixable = ["F401"]
+exclude = ["tests"]
+
+[lint.pylint]
+#Maximum number of arguments allowed for a function or method definition (see: PLR0913).
+max-args = 5
+
+[lint.pydocstyle]
+# Use numpy-style docstrings.
+convention = "numpy"
+
+
+# Formatterのルール
+[format]
+docstring-code-line-length = 60
+# 文字列をダブルクォートに統一
+quote-style = "double"
+# インデントをタブ文字(\t)からスペースに変換
+indent-style = "space"
+skip-magic-trailing-comma = false # list等の最後の要素の後のコンマを削除しない。
